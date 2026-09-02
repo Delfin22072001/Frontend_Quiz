@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.0/css/all.min.css"
+    integrity="sha512-ApSLB1Pd3/bZN8fWB/RG9YhN/7bd9Hkf3AGaE2mPfebjrxagjuBtx2GcgdqIlJkUzwylBo61r9Xa9NmgBI0swA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <title>About EarthQuiz</title>
+</head>
+
+<body>
+
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+      <div class="container">
+        <a class="navbar-brand fw-bold fs-2" href="#">Earth<span class="navbar-brandColor">Quiz</span></a>
+
+        <!-- Mobile Menu Button -->
+        <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="offcanvas"
+          data-bs-target="#mobileMenu">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Desktop Menu -->
+        <div class="collapse navbar-collapse">
+          <ul class="navbar-nav ms-auto gap-3 d-none d-lg-flex">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link nav-active" href="about.html">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="quizInstructions.html">Quiz</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Offcanvas Sidebar -->
+  <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="mobileMenu">
+    <div class="offcanvas-header">
+      <a class="navbar-brand fw-bold fs-2" href="#">Earth<span class="navbar-brandColor">Quiz</span></a>
+
+      <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas">
+      </button>
+    </div>
+
+    <div class="offcanvas-body">
+      <ul class="navbar-nav">
+        <li class="nav-item mb-2">
+          <a class="nav-link" href="index.html">Home</a>
+        </li>
+        <li class="nav-item mb-2">
+          <a class="nav-link nav-active" href="about.html">About</a>
+        </li>
+        <li class="nav-item mb-2">
+          <a class="nav-link" href="quizInstructions.html">Quiz</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <main>
+    <section>
+      <div class="container text-white my-5 p-4">
+        <h4>About EarthQuiz</h4>
+        <p>EarthQuiz is a quick, fun way to test how well you really know our planet. One quiz, ten questions, covering
+          everything from geography and climate to wildlife and natural wonders — no categories to pick, no long setup,
+          just jump in and see how you score.</p>
+        <p>Whether you're a trivia lover, brushing up on general knowledge, or just want a quick mental challenge,
+          EarthQuiz gives you a fast, satisfying way to learn something new about the world in just a few minutes.</p>
+        <h4>How it Works</h4>
+        <ul>
+          <li><b>10 Questions</b> — A quick mix covering different aspects of our planet</li>
+          <li><b>One Question at a Time </b>— Answer and move forward with the Next button — no going back, so choose carefully</li>
+          <li><b>Your Score</b> — See your final result out of 10 as soon as you finish all 10 questions</li>
+          <li><b>Play Again Anytime</b> — Click Play Again to restart the quiz and try for a better score</li>
+        </ul>
+        <h4>Why EarthQuiz?</h4>
+        <p>Learning about the world shouldn't take effort to start. EarthQuiz keeps it simple — one short quiz, real
+          facts, and a quick way to challenge yourself whenever you have a few free minutes.</p>
+        <p>Ready? <a class="text-white" href="quizInstructions.html"><b>Start the quiz and see how well you really know Earth.</b></a></p>
+      </div>
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
