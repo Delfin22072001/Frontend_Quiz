@@ -11,83 +11,100 @@ const questions = [
   { question: "What is the tallest mountain in the world (above sea level)?", options: ["K2", "Kangchenjunga", "Mount Everest", "Lhotse"], answer: "Mount Everest" }
 ];
 
-const progressBar = document.getElementById('progress-bar')
-const question = document.getElementById('question')
-const answer = document.getElementById('answer')
-const options = document.getElementById('options')
-const result = document.getElementById('result')
-const nextBtn = document.getElementById('next-btn')
-const playagainBtn = document.getElementById('playagain-btn')
-let index = 0
-let score = 0
-let questionNo = 1
+const progressBar = document.getElementById('progress-bar');
+const question = document.getElementById('question');
+const options = document.getElementById('options');
+const result = document.getElementById('result');
+const nextBtn = document.getElementById('next-btn');
+const playagainBtn = document.getElementById('playagain-btn');
 
+let index = JSON.parse(localStorage.getItem('index')) || 0;
+let score = JSON.parse(localStorage.getItem('score')) || 0;
+let questionNo = JSON.parse(localStorage.getItem('questionNo')) || 1;
 
 function playQuiz(){
-  progressBar.innerHTML=`<b>${questionNo} of Question ${questions.length}</b>`
-  question.textContent=`${questionNo}) ${questions[index].question}`
-  options.innerHTML=""
-  let userOptions= questions[index].options
-  const ul=document.createElement('ul')
+  progressBar.innerHTML = `<b>Question ${questionNo} of ${questions.length}</b>`;
+  question.textContent = `${questionNo}) ${questions[index].question}`;
+  options.innerHTML = "";
+  let userOptions = questions[index].options;
+  const ul = document.createElement('ul');
 
-  for(let option of userOptions){
-    const li=document.createElement('li')
-    const input = document.createElement('input')
-    const div = document.createElement('div')
-    input.type="radio"
-    input.name="options"
-    div.classList.add('list-container')
-    li.classList.add('my-options')
-    li.textContent=option
-    input.value=li.textContent
-    div.appendChild(input)
-    div.appendChild(li)
-    ul.appendChild(div)
-  }
-  options.appendChild(ul)
+  userOptions.forEach((option, i)=>{
+    const label = document.createElement('label')
+    const span = document.createElement('span');
+    const input = document.createElement('input');
+    const div = document.createElement('div');
+
+    input.type = "radio";
+    input.name = "options";
+    input.value = option;
+    input.id = `option-${i}`;
+    label.htmlFor = `option-${i}`;
+
+    span.textContent = option;
+    span.classList.add('my-options');
+
+    label.appendChild(input);
+    label.appendChild(span);
+    div.classList.add('list-container');
+    div.appendChild(label);
+    ul.appendChild(div);
+  })
+  options.appendChild(ul);
 
   if(index === questions.length - 1){
-    nextBtn.textContent="Submit"
+    nextBtn.textContent="Submit";
   }
 }
 playQuiz()
 
 nextBtn.addEventListener('click', ()=>{
 
- const checked = document.querySelector('input[name="options"]:checked')
+ const checked = document.querySelector('input[name="options"]:checked');
   if(!checked){
-    alert("Please select a option")
+    alert("Please select a option");
+    return
   }
 
   if (checked.value === questions[index].answer) {
-    score += 1
+    score += 1;
+    localStorage.setItem('score', JSON.stringify(score));
   }
 
   if(index < questions.length - 1){
-    index += 1
-    questionNo += 1
+    index += 1;
+    questionNo += 1;
+
+    localStorage.setItem('index', JSON.stringify(index));
+    localStorage.setItem('questionNo', JSON.stringify(questionNo));
     playQuiz()
   }
 
   else{
-    question.textContent="Quiz Submitted Successfully"
-    options.textContent=""
-    progressBar.textContent=""
-    result.innerHTML=`You scored <b>${score} out of 10</b>`
-    nextBtn.style.display="none"
-    playagainBtn.style.display="block"
+    question.textContent = "Quiz Submitted Successfully";
+    options.textContent = "";
+    progressBar.textContent = "";
+    result.innerHTML = `You scored <b>${score} out of 10</b>`;
+    nextBtn.style.display = "none";
+    playagainBtn.style.display = "block";
   }
 })
 
 playagainBtn.addEventListener('click', ()=>{
-  result.textContent=""
-  index=0
-  score=0
-  questionNo = 1
-  playagainBtn.style.display="none"
-  nextBtn.textContent="Next"
-  nextBtn.style.display="block"
-  playQuiz()
+  result.textContent = "";
+
+  index = 0;
+  score = 0;
+  questionNo = 1;
+
+  localStorage.setItem('index', JSON.stringify(0));
+  localStorage.setItem('score', JSON.stringify(0));
+  localStorage.setItem('questionNo', JSON.stringify(1));
+
+  playagainBtn.style.display="none";
+  nextBtn.textContent="Next";
+  nextBtn.style.display="block";
+  playQuiz();
 })
 
 
