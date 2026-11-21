@@ -35,23 +35,13 @@ p, li{
   font-weight: bold;
 }
 
-.nav-link::after{
-  content:"";
-  position: absolute;
-  bottom: -15px;
-  left:0;
-  height:3px;
-  width:0;
-  background:#c084fc;
-  transition: width 0.3s ease;
-}
-
-.nav-link:hover::after{
-  width: 100%;
-}
-
-.nav-link:hover, .nav-active{
+.nav-link:hover{
   color:#c084fc; 
+}
+
+.active{
+  background-color:#c084fc;
+  border-radius: 40px;
 }
 
 .submit-btn{
@@ -59,8 +49,8 @@ p, li{
 }
 
 /* home page */
-.home-contents{
-  height:80vh;
+.home-page{
+  min-height:80vh;
 }
 
 .home-image img{
@@ -85,8 +75,13 @@ p, li{
   background-color:#7012c7;
 }
 
-#playagain-btn{
+#playagain-btn, #exit-btn{
   display: none;
+}
+
+#errorMessage{
+  color:rgb(239, 80, 80);
+  font-weight:500;
 }
 
 /* quiz */
@@ -111,12 +106,27 @@ li{
   padding: 5px;
 }
 
+span{
+  padding:0 10px;
+}
+
+@media (max-width:1024px){
+
+  .home-page{
+    height:50vh;
+  }
+}
 
 @media (max-width:600px) {
 
-  .home-image img{
-    display: none;
+  .home-page{
+    height:100vh;
   }
+
+  .home-page img{
+    width:400px;
+  }
+
   .nav-link:hover::after{
     width:0;
   }

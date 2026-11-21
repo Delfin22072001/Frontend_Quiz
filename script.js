@@ -11,12 +11,22 @@ const questions = [
   { question: "What is the tallest mountain in the world (above sea level)?", options: ["K2", "Kangchenjunga", "Mount Everest", "Lhotse"], answer: "Mount Everest" }
 ];
 
+//active navlink
+const activePage = window.location.pathname
+const navLinks = document.querySelectorAll('ul li a').forEach((link) => {
+  if(link.href.includes(`${activePage}`)){
+    link.classList.add('active')
+  }}
+) 
+
 const progressBar = document.getElementById('progress-bar');
 const question = document.getElementById('question');
 const options = document.getElementById('options');
 const result = document.getElementById('result');
 const nextBtn = document.getElementById('next-btn');
 const playagainBtn = document.getElementById('playagain-btn');
+const exitBtn = document.getElementById('exit-btn')
+const errorMessage = document.getElementById('errorMessage')
 
 let index = JSON.parse(localStorage.getItem('index')) || 0;
 let score = JSON.parse(localStorage.getItem('score')) || 0;
@@ -62,9 +72,10 @@ nextBtn.addEventListener('click', ()=>{
 
  const checked = document.querySelector('input[name="options"]:checked');
   if(!checked){
-    alert("Please select a option");
+    errorMessage.textContent = "Please select a option"
     return
   }
+  errorMessage.textContent=""
 
   if (checked.value === questions[index].answer) {
     score += 1;
@@ -87,12 +98,11 @@ nextBtn.addEventListener('click', ()=>{
     result.innerHTML = `You scored <b>${score} out of 10</b>`;
     nextBtn.style.display = "none";
     playagainBtn.style.display = "block";
+    exitBtn.style.display = "block"
   }
 })
 
-playagainBtn.addEventListener('click', ()=>{
-  result.textContent = "";
-
+function resetGame(){
   index = 0;
   score = 0;
   questionNo = 1;
@@ -100,12 +110,25 @@ playagainBtn.addEventListener('click', ()=>{
   localStorage.setItem('index', JSON.stringify(0));
   localStorage.setItem('score', JSON.stringify(0));
   localStorage.setItem('questionNo', JSON.stringify(1));
+}
 
+playagainBtn.addEventListener('click', ()=>{
+  result.textContent = "";
+
+  resetGame()
   playagainBtn.style.display="none";
   nextBtn.textContent="Next";
   nextBtn.style.display="block";
+  exitBtn.style.display="none"
   playQuiz();
 })
+
+exitBtn.addEventListener('click', () =>{
+  resetGame()
+  window.location.href="quizinstructions.html"
+})
+
+
 
 
 

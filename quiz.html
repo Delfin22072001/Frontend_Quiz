@@ -39,7 +39,7 @@
               <a class="nav-link" href="about.html">About</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link nav-active" href="quizInstructions.html">Quiz</a>
+              <a class="nav-link" href="quizInstructions.html">Quiz</a>
             </li>
           </ul>
         </div>
@@ -65,7 +65,7 @@
           <a class="nav-link" href="about.html">About</a>
         </li>
         <li class="nav-item mb-2">
-          <a class="nav-link nav-active" href="quizInstructions.html">Quiz</a>
+          <a class="nav-link" href="quizInstructions.html">Quiz</a>
         </li>
       </ul>
     </div>
@@ -78,8 +78,12 @@
         <h4 id="question"></h4>
         <p id="result"></p>
         <div id="options"></div>
+        <p id="errorMessage"></p>
         <button class="navigation-btn my-5" id="next-btn">Next</button>
-        <button class="navigation-btn my-5" id="playagain-btn">Play Again</button>
+        <div class="d-flex gap-3">
+          <button class="navigation-btn my-5" id="playagain-btn">Play Again</button>
+          <button class="navigation-btn my-5" id="exit-btn">Exit Game</button>
+        </div>
       </div>
     </section>
   </main>
