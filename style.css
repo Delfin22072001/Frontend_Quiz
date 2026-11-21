@@ -10,8 +10,9 @@ h1,h2,h3,h4,h5,h6{
   font-family: 'poppins', sans-serif;
   color:#c084fc;
 }
-p, li{
-  font-size:18px;
+
+p, .my-options, li{
+  font-size:19px;
   line-height: 1.5em;
 }
 
@@ -110,6 +111,13 @@ span{
   padding:0 10px;
 }
 
+@media (max-width:1280px){
+
+  .home-page img{
+    width:600px;
+  }
+}
+
 @media (max-width:1024px){
 
   .home-page{
@@ -117,18 +125,23 @@ span{
   }
 }
 
-@media (max-width:600px) {
+@media (max-width:640px) {
 
   .home-page{
     height:100vh;
   }
 
   .home-page img{
-    width:400px;
+    width:300px;
   }
 
   .nav-link:hover::after{
     width:0;
+  }
+
+  .active{
+    padding-left:20px;
+    width:100px;
   }
 }
 
