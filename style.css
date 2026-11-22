@@ -107,9 +107,9 @@ li{
   padding: 5px;
 }
 
-span{
-  padding:0 10px;
-}
+  .my-options{
+    padding:0 10px;
+  }
 
 @media (max-width:1280px){
 
